@@ -7,7 +7,7 @@ type UserProps = {
 const User:FC<UserProps> = ({user}) => {
     return (
         <>
-            <p><Link href={`/users/${user.id}`}>{user.id} - {user.username}</Link></p>
+            <p><Link href={{pathname: `/users/${user.id}`, query:{data: JSON.stringify(user)} }}>{user.id} - {user.username}</Link></p>
 
         </>
     );

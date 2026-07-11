@@ -1,16 +1,11 @@
-"use client"
-
-import {useEffect, useState} from "react";
+import User from "@/app/components/user/User";
 import {apiService} from "@/app/services/api.service";
 import {IUser} from "@/app/models/IUser";
-import User from "@/app/components/user/User";
 
-const Users = () => {
-    const [users, setUsers] = useState<IUser[]>([])
-    useEffect(() => {
-        apiService.getUsers()
-            .then(users => setUsers(users))
-    }, []);
+const Users = async () => {
+
+    const users: IUser[] = await apiService.getUsers();
+
     return (
         <div>
             <h1>Users</h1>
