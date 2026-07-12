@@ -1,9 +1,10 @@
 import {z} from 'zod';
 
-export const userSchema = z.object({
-    name: z.string().min(3, 'Min 3').max(100, 'Max 100'),
-    email: z.string().email('Min 2'),
-    password: z.string().min(6, 'Min 6'),
+export const carSchema = z.object({
+    brand: z.string().min(1, 'Min 1').max(20, 'Max 20'),
+    price: z.coerce.number().min(0, 'Min 0').max(1000000, 'Max 1.000.000'),
+    year: z.coerce.number().min(1990, 'Min 1990').max(2026, 'Max 2026'),
 })
 
-export type UserFormData = z.infer<typeof userSchema>;
+export type UserFormData = z.infer<typeof carSchema>;
+export type UserFormInput = z.input<typeof carSchema>;
